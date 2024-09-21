@@ -1,22 +1,22 @@
-import useUsuarios from '../hooks/useUsuarios'; // Importa el hook personalizado useUsuarios
+import useUsuarios from '../hooks/useUsuarios'; // Trae el hook personalizado llamado useUsuarios
 
-// Vista para el Inciso J - Custom Hook useUsuarios
+// Componente para la vista del Inciso J - Implementación del custom hook useUsuarios
 function IncisoJ() {
-    // Usa el hook personalizado para obtener la lista de usuarios
-    const usuarios = useUsuarios(); // Llama al hook useUsuarios para obtener los datos de usuarios
+    // Emplea el hook personalizado para acceder a la lista de usuarios
+    const usuarios = useUsuarios(); // Utiliza el hook useUsuarios para recuperar los datos de usuarios
 
-    // Renderiza la vista con la lista de usuarios
+    // Genera el contenido de la vista mostrando la lista de usuarios
     return (
         <div>
-            <h2>Lista de Usuarios (usando custom hook)</h2> {/* Título de la lista */}
+            <h2>Lista de Usuarios (con custom hook)</h2> {/* Encabezado que indica la lista de usuarios */}
             <ul>
-                {/* Mapea sobre el estado de usuarios para renderizar cada nombre */}
+                {/* Recorre la lista de usuarios y muestra cada uno en un elemento de la lista */}
                 {usuarios.map(usuario => (
-                    <li key={usuario.id}>{usuario.name}</li> // Renderiza cada usuario en un <li>, usando el id como clave
+                    <li key={usuario.id}>{usuario.name}</li> // Muestra cada usuario en un <li>, asignando el id como clave única
                 ))}
             </ul>
         </div>
     );
 }
 
-export default IncisoJ; // Exporta el componente IncisoJ para su uso en otras partes de la aplicación
+export default IncisoJ; // Hace disponible el componente IncisoJ para su uso en otros lugares de la aplicación
