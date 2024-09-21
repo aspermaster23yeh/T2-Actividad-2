@@ -1,4 +1,3 @@
-// Vista para la práctica personalizada con JavaScript
 function IncisoA() {
     // Definición de un objeto producto con propiedades nombre, precio y un método mostrarDetalles
     const producto = {

@@ -1,37 +1,37 @@
-import { useReducer } from "react"; // Importa el hook useReducer de React
+import { useReducer } from "react"; // Trae el hook useReducer de la biblioteca React
 
-// Estado inicial y función reductora
+// Configuración del estado inicial y la función reductora
 // G) useReducer
-// Define el estado inicial del contador y la función reductora para manejar las acciones.
-const initialState = { contador: 0 }; // Estado inicial del contador, donde el valor comienza en 0
+// Establece el estado base del contador y la función encargada de manejar las actualizaciones del estado.
+const initialState = { contador: 0 }; // Estado base donde el contador empieza en 0
 
-// Función reductora que maneja las acciones
+// Función reductora para procesar las acciones
 const reducer = (state, action) => { 
-    // Función que recibe el estado actual y una acción para determinar cómo actualizar el estado
-    switch (action.type) { // Dependiendo del tipo de acción, actualiza el estado
-        case 'incrementar': // Acción para incrementar el contador
-            return { contador: state.contador + 1 }; // Retorna un nuevo estado con el contador incrementado en 1
-        case 'decrementar': // Acción para decrementar el contador
-            return { contador: state.contador - 1 }; // Retorna un nuevo estado con el contador decrecido en 1
-        default: // Si la acción no es reconocida, retorna el estado actual
-            return state; // Devuelve el estado sin cambios
+    // Función que toma el estado actual y una acción, y decide cómo modificar el estado
+    switch (action.type) { // Según el tipo de acción, se aplica un cambio en el estado
+        case 'incrementar': // Acción que incrementa el contador
+            return { contador: state.contador + 1 }; // Devuelve el estado actualizado con el contador aumentado en 1
+        case 'decrementar': // Acción que reduce el contador
+            return { contador: state.contador - 1 }; // Devuelve el estado actualizado con el contador disminuido en 1
+        default: // Si la acción no es reconocida, se mantiene el estado actual
+            return state; // No se realiza ninguna modificación en el estado
     }
 };
 
-// Vista para el Inciso G - useReducer
+// Componente para el Inciso G - uso de useReducer
 function IncisoG() {
-    // Usa el hook useReducer con el reducer y el estado inicial
+    // Inicializa el hook useReducer con la función reductora y el estado inicial
     const [state, dispatch] = useReducer(reducer, initialState);
-    // state contiene el estado actual y dispatch es la función para enviar acciones al reducer
+    // state contiene el estado actual y dispatch es la función que envía acciones a la reductora
 
-    // Renderiza la vista con el valor del contador y botones para incrementar y decrementar
+    // Genera el HTML mostrando el valor del contador y los botones para modificarlo
     return (
         <div>
-            <p>Contador: {state.contador}</p> {/* Muestra el valor actual del contador */}
-            <button onClick={() => dispatch({ type: 'incrementar' })}>Incrementar</button> {/* Botón que despacha la acción de incrementar */}
-            <button onClick={() => dispatch({ type: 'decrementar' })}>Decrementar</button> {/* Botón que despacha la acción de decrementar */}
+            <p>Contador: {state.contador}</p> {/* Visualiza el valor actual del contador */}
+            <button onClick={() => dispatch({ type: 'incrementar' })}>Incrementar</button> {/* Botón que dispara la acción para aumentar el contador */}
+            <button onClick={() => dispatch({ type: 'decrementar' })}>Decrementar</button> {/* Botón que dispara la acción para reducir el contador */}
         </div>
     );
 }
 
-export default IncisoG; // Exporta el componente IncisoG para que pueda ser utilizado en otras partes de la aplicación
+export default IncisoG; // Exporta el componente IncisoG para su uso en otros módulos de la aplicación

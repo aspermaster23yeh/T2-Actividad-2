@@ -1,60 +1,59 @@
-/* eslint-disable react/prop-types */ 
-import { useState, useEffect } from 'react'; // Importa los hooks useState y useEffect de React
-import axios from 'axios'; // Importa la librería axios para hacer solicitudes HTTP
+import { useState, useEffect } from 'react'; // Trae los hooks useState y useEffect desde React
+import axios from 'axios'; // Carga la librería axios para realizar peticiones HTTP
 
 function IncisoI({ datos }) { // E) Hook - useState, useEffect
-    // Estado para almacenar los datos de la API
+    // Estado para gestionar los datos obtenidos de la API
     const [data, setData] = useState([]); // Inicializa el estado 'data' como un array vacío
-    // Estado para la página actual en la paginación
-    const [currentPage, setCurrentPage] = useState(1); // Inicializa la página actual en 1
-    // Estado para definir cuántos ítems se muestran por página
-    const [itemsPerPage, setItemsPerPage] = useState(4); // Establece el número de ítems por página en 4
+    // Estado para llevar el control de la página activa en la paginación
+    const [currentPage, setCurrentPage] = useState(1); // Comienza la paginación en la página 1
+    // Estado para definir el número de elementos que se muestran por página
+    const [itemsPerPage, setItemsPerPage] = useState(4); // Fija el número de elementos por página en 4
 
     // E) Hook - useEffect
-    // Realiza una solicitud HTTP para obtener datos cuando el componente se monta
+    // Envía una solicitud HTTP para obtener información cuando el componente se renderiza por primera vez
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/users') // Solicitud GET a la API
+        axios.get('https://jsonplaceholder.typicode.com/users') // Realiza una solicitud GET a la API
             .then(response => {
-                setData(response.data); // Actualiza el estado con los datos recibidos
-                console.log(response.data); // Muestra los datos en la consola
+                setData(response.data); // Actualiza el estado con los datos obtenidos de la API
+                console.log(response.data); // Muestra los datos en la consola del navegador
             })
             .catch(error => {
-                console.error('Error fetching data:', error); // Maneja errores en la solicitud
+                console.error('Error al obtener los datos:', error); // Maneja los errores de la solicitud
             });
-    }, []); // Dependencia vacía asegura que el efecto se ejecute solo una vez al montar el componente
+    }, []); // El arreglo de dependencias vacío asegura que el efecto se ejecute una única vez al montar el componente
 
-    // Calcula el índice del primer y último ítem para la página actual
-    const indexOfLastItem = currentPage * itemsPerPage; // Índice del último ítem en la página actual
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage; // Índice del primer ítem en la página actual
-    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem); // Datos de la página actual
+    // Calcula los índices del primer y último elemento a mostrar en la página actual
+    const indexOfLastItem = currentPage * itemsPerPage; // Calcula el índice del último elemento visible en la página
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage; // Calcula el índice del primer elemento visible en la página
+    const currentItems = data.slice(indexOfFirstItem, indexOfLastItem); // Extrae los elementos que pertenecen a la página actual
 
-    // Función para cambiar la página
-    const paginate = (pageNumber) => setCurrentPage(pageNumber); // Cambia la página actual al número especificado
+    // Función para actualizar la página activa
+    const paginate = (pageNumber) => setCurrentPage(pageNumber); // Cambia la página activa al número que se le pasa
 
-    // Genera números de página basados en la longitud de los datos y ítems por página
-    const pageNumbers = []; // Inicializa un array vacío para los números de página
+    // Genera un arreglo con los números de página basados en la cantidad total de datos y el número de elementos por página
+    const pageNumbers = []; // Declara un arreglo para almacenar los números de página
     for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
-        pageNumbers.push(i); // Agrega cada número de página a la lista
+        pageNumbers.push(i); // Agrega cada número de página al arreglo
     }
 
-    // Renderiza la vista con la tabla de datos y botones de paginación
+    // Renderiza la tabla con los datos y los botones de paginación
     return (
         <div>
-            <h2>Inciso I - Paginación de Tabla</h2> {/* Título de la sección */}
+            <h2>Inciso I - Paginación de Tabla</h2> {/* Encabezado de la sección */}
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Username</th>
-                        <th>Phone</th>
-                        <th>Website</th>
+                        <th>Nombre</th>
+                        <th>Nombre de Usuario</th>
+                        <th>Teléfono</th>
+                        <th>Sitio Web</th>
                         <th>Email</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {currentItems.map(item => ( // Mapea sobre los ítems de la página actual
-                        <tr key={item.id}> {/* Usa el id como clave para cada fila */}
+                    {currentItems.map(item => ( // Recorre los elementos de la página actual
+                        <tr key={item.id}> {/* Usa el id como clave única para cada fila */}
                             <td>{item.id}</td> {/* Muestra el ID del usuario */}
                             <td>{item.name}</td> {/* Muestra el nombre del usuario */}
                             <td>{item.username}</td> {/* Muestra el nombre de usuario */}
@@ -66,13 +65,13 @@ function IncisoI({ datos }) { // E) Hook - useState, useEffect
                 </tbody>
             </table>
             <div className="pagination">
-                {pageNumbers.map(number => ( // Mapea sobre los números de página
+                {pageNumbers.map(number => ( // Recorre los números de página
                     <button
-                        key={number} // Usa el número como clave para cada botón
-                        onClick={() => paginate(number)} // Cambia a la página correspondiente al hacer clic
-                        className={number === currentPage ? 'active' : ''} // Resalta el botón de la página actual
+                        key={number} // Usa el número de página como clave única
+                        onClick={() => paginate(number)} // Cambia a la página correspondiente al hacer clic en el botón
+                        className={number === currentPage ? 'active' : ''} // Marca el botón de la página actual con una clase especial
                     >
-                        {number} {/* Muestra el número de página */}
+                        {number} {/* Muestra el número de página en el botón */}
                     </button>
                 ))}
             </div>
@@ -80,4 +79,4 @@ function IncisoI({ datos }) { // E) Hook - useState, useEffect
     );
 }
 
-export default IncisoI; // Exporta el componente IncisoI para su uso en otras partes de la aplicación
+export default IncisoI; // Exporta el componente IncisoI para poder utilizarlo en otros lugares de la aplicación

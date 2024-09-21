@@ -1,10 +1,10 @@
-import Saludo from '../components/Saludo'; // Importa el componente Saludo desde la carpeta de componentes
+import MiGift from '../components/MiGift'; // Importa el componente MiGift desde la carpeta de componentes
 
-// Vista para el Inciso B - Componentes JavaScript
+// Vista para el Inciso B - Componente React
 function IncisoB() {
     return (
         <div className="content"> {/* Contenedor principal que utiliza la clase CSS .content */}
-            <Saludo /> {/* Renderiza el componente Saludo que muestra un mensaje de saludo */}
+            <MiGift /> {/* Renderiza el componente MiGift */}
             <p>
                 {/* Enlace a un GIF en Giphy, estilizado con un color específico */}
                 <a href="https://giphy.com/gifs/typing-N57KpqDb0tlWE" style={{ color: '#e0e0e0' }}>

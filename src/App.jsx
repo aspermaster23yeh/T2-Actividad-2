@@ -1,25 +1,25 @@
-import './App.css' // Importa los estilos CSS para la aplicación
-import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom'; // Importa componentes de react-router-dom para la navegación
-import IncisoA from './views/IncisoA'; // Importa el componente IncisoA
-import IncisoB from './views/IncisoB'; // Importa el componente IncisoB
-import IncisoC_F from './views/IncisoC_F'; // Importa el componente IncisoC_F
-import IncisoG from './views/IncisoG'; // Importa el componente IncisoG
-import IncisoH from './views/IncisoH'; // Importa el componente IncisoH
-import IncisoI from './views/IncisoI'; // Importa el componente IncisoI
-import IncisoJ from './views/IncisoJ'; // Importa el componente IncisoJ
-import IncisoK_L from './views/IncisoK_L'; // Importa el componente IncisoK_L
+import './App.css'; // Carga los estilos CSS de la aplicación
+import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom'; // Importa componentes de react-router-dom para gestionar la navegación
+import IncisoA from './views/IncisoA'; // Trae el componente IncisoA
+import IncisoB from './views/IncisoB'; // Trae el componente IncisoB
+import IncisoC_F from './views/IncisoC_F'; // Trae el componente IncisoC_F
+import IncisoG from './views/IncisoG'; // Trae el componente IncisoG
+import IncisoH from './views/IncisoH'; // Trae el componente IncisoH
+import IncisoI from './views/IncisoI'; // Trae el componente IncisoI
+import IncisoJ from './views/IncisoJ'; // Trae el componente IncisoJ
+import IncisoK_L from './views/IncisoK_L'; // Trae el componente IncisoK_L
 
 function App() {
   return (
-    // Envuelve toda la aplicación dentro de un Router para manejar la navegación
+    // Envuelve toda la aplicación con un Router para gestionar la navegación
     <Router>
-      <div className="container"> {/* Contenedor principal */}
-        <header> {/* Encabezado de la página */}
-          <h3>Selecciona el inciso que necesitas mirar:D</h3> {/* Título de la aplicación */}
+      <div className="container"> {/* Contenedor principal de la aplicación */}
+        <header> {/* Parte superior de la página */}
+          <h3>Selecciona el inciso que necesitas mirar:D</h3> {/* Título de la interfaz */}
         </header>
 
-        <div className="main"> {/* Contenido principal */}
-          <section className="content"> {/* Sección donde se mostrará el contenido basado en la ruta seleccionada */}
+        <div className="main"> {/* Área principal del contenido */}
+          <section className="content"> {/* Sección donde se presenta el contenido según la ruta seleccionada */}
             <Routes>
               <Route path="/a" element={<IncisoA />} />
               <Route path="/b" element={<IncisoB />} />
@@ -33,7 +33,7 @@ function App() {
           </section>
         </div>
 
-        <nav className="navbar-bottom"> {/* Barra de navegación en la parte inferior */}
+        <nav className="navbar-bottom"> {/* Barra de navegación situada en la parte inferior */}
           <ul>
             <li><NavLink to="/a" className={({ isActive }) => isActive ? 'active-link' : 'link'}>Inciso A</NavLink></li>
             <li><NavLink to="/b" className={({ isActive }) => isActive ? 'active-link' : 'link'}>Inciso B</NavLink></li>

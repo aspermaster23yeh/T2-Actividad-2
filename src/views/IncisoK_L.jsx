@@ -1,44 +1,44 @@
-import useFormulario from '../hooks/useFormulario'; // Importa el hook personalizado useFormulario
+import useFormulario from '../hooks/useFormulario'; // Trae el hook personalizado useFormulario
 
-// Vista para el Inciso K-L - Formularios y Custom Hook
+// Componente para la vista de Inciso K-L - Formularios y Custom Hook
 function IncisoK_L() {
-    // Usa el hook personalizado para manejar el estado del formulario
+    // Utiliza el hook personalizado para gestionar el estado del formulario
     const [form, actualizarFormulario] = useFormulario({
-        nombre: '', // Estado inicial del campo nombre
-        email: ''   // Estado inicial del campo email
+        nombre: '', // Valor inicial del campo nombre
+        email: ''   // Valor inicial del campo email
     });
 
-    // Función para manejar el envío del formulario
+    // Función que se ejecuta al enviar el formulario
     const manejarSubmit = (e) => {
-        e.preventDefault(); // Previene el comportamiento por defecto del formulario (recargar la página)
-        alert(`Nombre: ${form.nombre}, Email: ${form.email}`); // Muestra una alerta con los datos del formulario
+        e.preventDefault(); // Evita que el formulario recargue la página por defecto
+        alert(`Nombre: ${form.nombre}, Email: ${form.email}`); // Muestra los datos ingresados en una alerta
     };
 
-    // Renderiza la vista con el formulario
+    // Retorna el JSX que renderiza la interfaz del formulario
     return (
         <div style={styles.container}>
-            <h2 style={styles.title}>Formulario</h2> {/* Título del formulario */}
-            <form onSubmit={manejarSubmit} style={styles.form}> {/* Maneja el evento submit del formulario */}
+            <h2 style={styles.title}>Formulario</h2> {/* Encabezado del formulario */}
+            <form onSubmit={manejarSubmit} style={styles.form}> {/* Asocia el manejo del envío del formulario */}
                 <div style={styles.formGroup}>
-                    <label htmlFor="nombre" style={styles.label}>Nombre:</label> {/* Etiqueta para el campo nombre */}
+                    <label htmlFor="nombre" style={styles.label}>Nombre:</label> {/* Etiqueta del campo para nombre */}
                     <input
                         type="text"
                         id="nombre"
                         name="nombre"
-                        value={form.nombre} // Valor del campo nombre vinculado al estado del formulario
-                        onChange={actualizarFormulario} // Maneja los cambios en el campo nombre
-                        style={styles.input} // Aplica estilos al campo de entrada
+                        value={form.nombre} // Conecta el valor del campo nombre al estado gestionado
+                        onChange={actualizarFormulario} // Actualiza el estado al modificar el campo nombre
+                        style={styles.input} // Añade estilo al campo de texto
                     />
                 </div>
                 <div style={styles.formGroup}>
-                    <label htmlFor="email" style={styles.label}>Email:</label> {/* Etiqueta para el campo email */}
+                    <label htmlFor="email" style={styles.label}>Email:</label> {/* Etiqueta del campo para email */}
                     <input
                         type="email"
                         id="email"
                         name="email"
-                        value={form.email} // Valor del campo email vinculado al estado del formulario
-                        onChange={actualizarFormulario} // Maneja los cambios en el campo email
-                        style={styles.input} // Aplica estilos al campo de entrada
+                        value={form.email} // Conecta el valor del campo email al estado gestionado
+                        onChange={actualizarFormulario} // Actualiza el estado al modificar el campo email
+                        style={styles.input} // Añade estilo al campo de email
                     />
                 </div>
                 <button type="submit" style={styles.button}>Enviar</button> {/* Botón para enviar el formulario */}
@@ -47,7 +47,7 @@ function IncisoK_L() {
     );
 }
 
-// Definición de estilos para el formulario
+// Definición de los estilos aplicados al formulario y sus elementos
 const styles = {
     container: {
         maxWidth: '600px',
@@ -80,7 +80,7 @@ const styles = {
         fontSize: '1rem',
         borderRadius: '4px',
         border: '1px solid #ccc',
-        backgroundColor: '#fff', // Fondo blanco para el input
+        backgroundColor: '#fff', // Define el color de fondo blanco para el campo de texto
         boxSizing: 'border-box',
         color: '#333',
     },
@@ -96,4 +96,4 @@ const styles = {
     },
 };
 
-export default IncisoK_L; // Exporta el componente IncisoK_L para su uso en otras partes de la aplicación
+export default IncisoK_L; // Hace disponible el componente IncisoK_L para ser importado en otros módulos

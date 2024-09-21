@@ -1,8 +1,6 @@
-
-
     import gif from '../assets/gif.webp'; // Asegúrate de que la ruta sea correcta
 
-    function Saludo() {
+    function MiGift() {
         return (
             <div style={{ 
                 width: '100%', 
@@ -26,7 +24,5 @@
             </div>
         );
     }
-    
-   
 
-export default Saludo;
+export default MiGift;

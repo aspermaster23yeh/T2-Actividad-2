@@ -1,21 +1,21 @@
 import { useState } from 'react';
 
-// Custom Hook para manejar el estado de un formulario
+// Hook personalizado para gestionar el estado de un formulario
 const useFormulario = (valoresIniciales) => {
-    // Estado del formulario inicializado con valoresIniciales
+    // Inicializa el estado del formulario con los valores proporcionados
     const [formulario, setFormulario] = useState(valoresIniciales);
 
-    // Función para actualizar el estado del formulario
+    // Función para modificar el estado del formulario
     const actualizarFormulario = (e) => {
-        const { name, value } = e.target; // Obtiene el nombre y valor del campo de entrada
+        const { name, value } = e.target; // Extrae el nombre y el valor del campo de entrada
         setFormulario({
-            ...formulario, // Mantiene los valores anteriores del formulario
-            [name]: value // Actualiza el valor del campo específico
+            ...formulario, // Conserva los valores previos del formulario
+            [name]: value // Actualiza el valor del campo correspondiente
         });
     };
 
-    // Devuelve el estado del formulario y la función para actualizarlo
+    // Retorna el estado actual del formulario y la función para modificarlo
     return [formulario, actualizarFormulario];
 };
 
-export default useFormulario; // Exporta el hook personalizado para su uso en otros componentes
+export default useFormulario; // Exporta el hook personalizado para que pueda ser utilizado en otros componentes
