@@ -1,0 +1,124 @@
+/* Tema Oscuro */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e0e0e0;
+  /* Fondo general oscuro */
+  color: #ffffff;
+  /* Texto blanco */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+header {
+  background-color: #ffffff;
+  /* Encabezado oscuro */
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  width: 100%;
+
+}
+
+.sidebar {
+  width: 250px;
+  min-width: 200px;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  color: #f2f2f2;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 1rem 0;
+}
+
+.sidebar ul li a {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #ede9e9;
+}
+
+.active-link {
+  color: #ffffff;
+  background-color: #dbdbdb;
+  padding: 0.5rem;
+  display: block;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.content {
+  flex: 1;
+  background-color: #fffdfd;
+  /* Fondo del contenido oscuro */
+  color: #e0e0e0;
+  /* Texto claro */
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.content h2 {
+  margin-bottom: 1rem;
+  color: #bb86fc;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Estilo para la paginación */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  margin: 0 0.2rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #34A853;
+  color: white;
+  cursor: pointer;
+}
